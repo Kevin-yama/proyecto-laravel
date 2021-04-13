@@ -10,11 +10,16 @@ class usuarioController extends Controller
     public function index(){
         return view('usuarios.index');
     }
-    public function crear(){
+    public function vista_crear(){
         return view('usuarios.crear');
     }
+
     public function show($usuario){
         return view('usuarios.show',compact('usuario'));
+    }
+    public function crear (){
+
+        return '<button>atras</button>';
     }
 
 

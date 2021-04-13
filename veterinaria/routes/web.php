@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\usuarios\usuarioController;
 use App\Http\Controllers\homeController;
+use App\Http\Controllers\MascotaController;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\Routing\Route as RoutingRoute;
 
@@ -15,10 +16,7 @@ use Symfony\Component\Routing\Route as RoutingRoute;
 | contains the "web" middleware group. Now create something great!
 |
 */
-$mascota = [
-    ['nombre' => 'gato1'],
-    ['nombre' => 'gato12']
-];
+
 
 // Route::get('/home/{nombre?}', function ($nombre = 'invitad@') {
 //     return view('home', ['nombre' => $nombre]);
@@ -39,8 +37,9 @@ Route::get('about_me', function () {
 // rutas para usuarios
 Route::get('/usuarios/mostrar', [usuarioController::class, 'index'])->name('usuarios');
 Route::get('/usuarios/mostrar/{id}', [usuarioController::class, 'show']);
-Route::get('usuarios/crear', [usuarioController::class, 'crear']);
-
+Route::get('usuarios/crear', [usuarioController::class, 'vista_crear'])->name ('crear_usuario');
+Route::post('usuarios/crear', [usuarioController::class, 'crear'])->name ('crear_usuario');
 // rutas para mascotas
-Route::view('/mascotas', 'mascotas',compact('mascota')) -> name("mascotas");
+Route::get('/mascotas', [MascotaController::class, 'index']) -> name("mascotas");
+Route::post('mascotas', [MascotaController::class, 'store']);
 
