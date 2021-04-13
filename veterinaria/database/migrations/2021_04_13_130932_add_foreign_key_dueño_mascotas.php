@@ -15,7 +15,9 @@ class AddForeignKeyDueñoMascotas extends Migration
     {
         Schema::table('mascotas', function (Blueprint $table) {
             $table->foreign('usuario_id')
-                 ->references('id')->on('usuarios');
+                 ->references('id')->on('usuarios')
+                 ->onDelete('cascade')
+                 ->onUpdate('cascade');
         });
     }
 

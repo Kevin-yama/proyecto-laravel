@@ -38,7 +38,10 @@ Route::get('about_me', function () {
 Route::get('/usuarios/mostrar', [usuarioController::class, 'index'])->name('usuarios');
 Route::get('/usuarios/mostrar/{id}', [usuarioController::class, 'show']);
 Route::get('usuarios/crear', [usuarioController::class, 'vista_crear'])->name ('crear_usuario');
+Route::get('usuarios/{$id}/editar', [usuarioController::class, 'editar'])->name ('user.edit');
 Route::post('usuarios/crear', [usuarioController::class, 'crear'])->name ('crear_usuario');
+Route::delete('usuarios/{usuario}', [usuarioController::class, 'delete_user'])->name ('usuarios.delete');
+
 // rutas para mascotas
 Route::get('/mascotas', [MascotaController::class, 'index']) -> name("mascotas");
 Route::post('mascotas', [MascotaController::class, 'store']);
